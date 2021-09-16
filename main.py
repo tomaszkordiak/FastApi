@@ -1,6 +1,8 @@
 from typing import Optional
 
+import uvicorn
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -28,6 +30,16 @@ def comments(id, limit=10):
     return {'data': {'1', '2'}}
 
 
+class Blog(BaseModel):
+    title: str
+    body: str
+    published: Optional[bool]
+
+
 @app.post('/blog')
-def create_blog():
-    return {'data': 'Blog is created'}
+def create_blog(request: Blog):
+    return {'data': f'Blog is created with title {request.title}'}
+
+
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="localhost", port=8000)
