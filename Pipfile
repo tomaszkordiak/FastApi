@@ -12,6 +12,8 @@ passlib = "*"
 pydantic = "~=1.8.2"
 bcrypt = "*"
 SQLAlchemy = "*"
+python-jose = "*"
+python-multipart = "*"
 
 [dev-packages]
 
